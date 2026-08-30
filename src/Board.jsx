@@ -18,9 +18,14 @@ export default function Board({xIsNext, squares, onPlay, onRestart}) {
     }
 
     const winner = calculateWinner(squares);
+    const isDraw = !winner && squares.every(Boolean);
+    const gameOver = Boolean(winner) || isDraw;
     let status;
     if(winner){
         status = "Winner: " + winner; 
+    }
+    else if(isDraw){
+        status = "It's a draw";
     }
     else{
         status = "Next player: " + (xIsNext ? "X" : "O");
@@ -28,12 +33,12 @@ export default function Board({xIsNext, squares, onPlay, onRestart}) {
 
     return(
         <div className="board-panel">
-            <div className={`status ${winner ? "status--winner" : ""}`}>
+            <div className={`status ${gameOver ? "status--complete" : ""}`}>
                 <div className="status-message">
                     <span className="status-icon" aria-hidden="true">{winner ? "★" : ""}</span>
                     <span>{status}</span>
                 </div>
-                {winner && (
+                {gameOver && (
                     <button className="restart-button" type="button" onClick={onRestart}>
                         Play again
                     </button>

@@ -173,7 +173,7 @@ button {
   box-shadow: 0 0 0 5px var(--accent-soft);
 }
 
-.status--winner {
+.status--complete {
   justify-content: space-between;
   gap: 14px;
   border-color: rgba(255, 207, 92, 0.28);
@@ -181,7 +181,7 @@ button {
   color: var(--accent);
 }
 
-.status--winner::before {
+.status--complete::before {
   display: none;
 }
 

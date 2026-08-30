@@ -7,7 +7,7 @@ A modern and responsive Tic Tac Toe game built with React. Two players take turn
 - Classic 3x3 Tic Tac Toe board
 - Current-player status indicator
 - Automatic winner detection
-- Option to start a new game after a winner is determined
+- Option to start a new game after a win or draw
 - Move history with the ability to return to previous moves
 - Distinct colors for X and O
 - Responsive design for mobile, tablet, and desktop screens
@@ -71,7 +71,7 @@ Changes made to the source files while the development server is running will au
 2. Players take turns selecting an empty square.
 3. The first player to place three matching marks horizontally, vertically, or diagonally wins.
 4. The move-history panel can be used to return to an earlier point in the game.
-5. Once a winner is determined, select **Play again** to clear the board and move history.
+5. After a win or draw, select **Play again** to clear the board and move history.
 
 ## How It Works
 
@@ -79,7 +79,7 @@ The game state and move history are managed in `App.jsx`. Each move creates a co
 
 `Board.jsx` handles square interactions and checks for a winner after each move. `Square.jsx` represents the appearance and click behavior of each individual square.
 
-After a winner is determined, no additional marks can be placed on the board. The **Play again** button resets the game state, move history, and player order to their initial values.
+After a winner is determined or the board is full, no additional marks can be placed. The **Play again** button resets the game state, move history, and player order to their initial values.
 
 ## Project Structure
 
@@ -124,4 +124,4 @@ Start the test runner with:
 npm test
 ```
 
-The project currently does not contain automated test files. New tests can be added under `src/` using the `*.test.jsx` or `*.test.js` filename pattern.
+The interaction tests verify that a new game can be started after both a win and a draw. Additional tests can be added under `src/` using the `*.test.jsx` or `*.test.js` filename pattern.

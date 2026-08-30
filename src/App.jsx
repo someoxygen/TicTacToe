@@ -18,6 +18,11 @@ export default function Game(){
         setCurrentMove(nextMove);
     }
 
+    function restartGame(){
+        setHistory([Array(9).fill(null)]);
+        setCurrentMove(0);
+    }
+
     const moves = history.map((squares,move) => {
         let description;
         if(move > 0 ){
@@ -59,7 +64,12 @@ export default function Game(){
 
                 <div className="game">
                     <section className="game-board" aria-label="Tic tac toe board">
-                        <Board xIsNext = {xIsNext} squares = {currentSquares} onPlay={handlePlay} />
+                        <Board
+                            xIsNext={xIsNext}
+                            squares={currentSquares}
+                            onPlay={handlePlay}
+                            onRestart={restartGame}
+                        />
                     </section>
 
                     <aside className="game-info" aria-label="Move history">

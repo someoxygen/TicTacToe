@@ -1,6 +1,6 @@
 import Square from './Square';
 
-export default function Board({xIsNext, squares, onPlay}) {
+export default function Board({xIsNext, squares, onPlay, onRestart}) {
     function handleClick(i){
         if(calculateWinner(squares) || squares[i]){
             return;
@@ -29,8 +29,15 @@ export default function Board({xIsNext, squares, onPlay}) {
     return(
         <div className="board-panel">
             <div className={`status ${winner ? "status--winner" : ""}`}>
-                <span className="status-icon" aria-hidden="true">{winner ? "★" : ""}</span>
-                <span>{status}</span>
+                <div className="status-message">
+                    <span className="status-icon" aria-hidden="true">{winner ? "★" : ""}</span>
+                    <span>{status}</span>
+                </div>
+                {winner && (
+                    <button className="restart-button" type="button" onClick={onRestart}>
+                        Play again
+                    </button>
+                )}
             </div>
 
             <div className="board" aria-label="3 by 3 game grid">
